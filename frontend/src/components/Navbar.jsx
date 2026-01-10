@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useAuth } from "../auth/AuthContext.jsx";
+import { useCart } from "../cart/CartContext.jsx";
+
 
 const linkStyle = ({ isActive }) => ({
   padding: "8px 10px",
@@ -13,6 +15,8 @@ const linkStyle = ({ isActive }) => ({
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const { user, logout } = useAuth();
+  const { totalItems } = useCart();
+
 
   function closeMenu() {
     setOpen(false);
@@ -56,6 +60,10 @@ export default function Navbar() {
         <nav className="nav-desktop" style={{ display: "flex", gap: 6, alignItems: "center" }}>
           <NavLink to="/" style={linkStyle}>Home</NavLink>
           <NavLink to="/shop" style={linkStyle}>Shop</NavLink>
+          <NavLink to="/cart" style={linkStyle}>
+            Cart {totalItems > 0 ? `(${totalItems})` : ""}
+          </NavLink>
+
 
           {user?.role === "admin" && (
             <NavLink to="/admin" style={linkStyle}>Admin</NavLink>
@@ -119,6 +127,10 @@ export default function Navbar() {
           >
             <NavLink to="/" style={linkStyle} onClick={closeMenu}>Home</NavLink>
             <NavLink to="/shop" style={linkStyle} onClick={closeMenu}>Shop</NavLink>
+            <NavLink to="/cart" style={linkStyle} onClick={closeMenu}>
+              Cart {totalItems > 0 ? `(${totalItems})` : ""}
+            </NavLink>
+
 
             {user?.role === "admin" && (
               <NavLink to="/admin" style={linkStyle} onClick={closeMenu}>Admin</NavLink>

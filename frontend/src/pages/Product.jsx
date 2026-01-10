@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useCart } from "../cart/CartContext.jsx";
 
 const API = "http://localhost:4000/api";
 
 export default function Product() {
   const { id } = useParams();
+  const { addToCart } = useCart();
+
   const [p, setP] = useState(null);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState("");
@@ -47,15 +50,25 @@ export default function Product() {
             background: p.image_url ? `url(${p.image_url}) center/cover` : "#eee",
           }}
         />
+
         <h1 style={{ margin: 0 }}>{p.name}</h1>
+
         <div style={{ fontSize: 18, fontWeight: 700 }}>
           {(p.price_cents / 100).toFixed(2)} €
         </div>
-        <div style={{ opacity: 0.85 }}>{p.description}</div>
-        <div style={{ opacity: 0.75 }}>Na stanju: {p.stock}</div>
 
-        <button disabled={p.stock <= 0} style={{ padding: 10 }}>
-          {p.stock <= 0 ? "Nije dostupno" : "Dodaj u košaricu (DAN 5)"}
+        <div style={{ opacity: 0.85 }}>{p.description}</div>
+
+        <div style={{ opacity: 0.75 }}>
+          Na stanju: {p.stock}
+        </div>
+
+        <button
+          disabled={p.stock <= 0}
+          onClick={() => addToCart(p, 1)}
+          style={{ padding: 10 }}
+        >
+          {p.stock <= 0 ? "Nije dostupno" : "Dodaj u košaricu"}
         </button>
       </div>
     </div>
