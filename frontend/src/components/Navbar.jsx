@@ -63,13 +63,14 @@ export default function Navbar() {
           <NavLink to="/cart" style={linkStyle}>
             Cart {totalItems > 0 ? `(${totalItems})` : ""}
           </NavLink>
-          <NavLink to="/admin/orders" style={linkStyle}>Orders</NavLink>
-          <NavLink to="/admin/logs" style={linkStyle}>Logs</NavLink>
-
-
+          
 
           {user?.role === "admin" && (
-            <NavLink to="/admin" style={linkStyle}>Admin</NavLink>
+            <>
+              <NavLink to="/admin/orders" style={linkStyle}>Orders</NavLink>
+              <NavLink to="/admin/logs" style={linkStyle}>Logs</NavLink>
+              <NavLink to="/admin" style={linkStyle}>Admin</NavLink>
+            </>
           )}
 
           {!user ? (
@@ -133,13 +134,12 @@ export default function Navbar() {
             <NavLink to="/cart" style={linkStyle} onClick={closeMenu}>
               Cart {totalItems > 0 ? `(${totalItems})` : ""}
             </NavLink>
-            <NavLink to="/admin/orders" style={linkStyle}>Orders</NavLink>
-            <NavLink to="/admin/logs" style={linkStyle}>Logs</NavLink>
-
-
-
             {user?.role === "admin" && (
-              <NavLink to="/admin" style={linkStyle} onClick={closeMenu}>Admin</NavLink>
+              <>
+                <NavLink to="/admin/orders" style={linkStyle} onClick={closeMenu}>Orders</NavLink>
+                <NavLink to="/admin/logs" style={linkStyle} onClick={closeMenu}>Logs</NavLink>
+                <NavLink to="/admin" style={linkStyle} onClick={closeMenu}>Admin</NavLink>
+              </>
             )}
 
             {!user ? (

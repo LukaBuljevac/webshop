@@ -1,15 +1,16 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar.jsx";
-import Footer from "./Footer.jsx";
 
 export default function Layout() {
   return (
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+    <div style={{ minHeight: "100%", display: "grid", gridTemplateRows: "auto 1fr auto" }}>
       <Navbar />
-      <main style={{ flex: 1, padding: "16px", maxWidth: 1100, width: "100%", margin: "0 auto" }}>
+      <main className="container">
         <Outlet />
       </main>
-      <Footer />
+      <footer style={{ padding: 16, textAlign: "center", opacity: 0.7 }}>
+        © {new Date().getFullYear()} WebShop — React + Node + MySQL
+      </footer>
     </div>
   );
 }

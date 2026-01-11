@@ -2,91 +2,77 @@ import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
-    <div style={{ display: "grid", gap: 32 }}>
-      {/* HERO */}
+    <div style={{ display: "grid", gap: 16 }}>
       <section
+        className="card"
         style={{
-          padding: "48px 24px",
-          borderRadius: 20,
-          background: "linear-gradient(135deg, #111 0%, #333 100%)",
-          color: "white",
+          display: "grid",
+          gap: 10,
+          padding: 22,
+          background: "linear-gradient(135deg, rgba(0,0,0,0.05), rgba(0,0,0,0.02))",
         }}
       >
-        <h1 style={{ fontSize: 40, margin: 0 }}>
-          WebShop projekt
-        </h1>
-        <p style={{ maxWidth: 600, opacity: 0.9 }}>
-          Moderan webshop izrađen u Reactu i Node.js-u s MySQL bazom.
-          Projekt demonstrira autentikaciju, CRUD operacije i dinamički sadržaj.
+        <h1 style={{ margin: 0, fontSize: 34 }}>Dobrodošao u WebShop</h1>
+        <p className="muted" style={{ margin: 0, fontSize: 16, lineHeight: 1.6 }}>
+          Demo webshop projekt napravljen u Reactu (Vite) i Node.js (Express) uz MySQL bazu preko XAMPP-a.
+          U shopu možeš pregledati proizvode, dodati ih u košaricu i kreirati narudžbu.
         </p>
 
-        <div style={{ display: "flex", gap: 12, marginTop: 20, flexWrap: "wrap" }}>
-          <Link
-            to="/shop"
-            style={{
-              padding: "12px 18px",
-              borderRadius: 12,
-              background: "white",
-              color: "#111",
-              fontWeight: 600,
-              textDecoration: "none",
-            }}
-          >
-            Pregled proizvoda
-          </Link>
-          <Link
-            to="/register"
-            style={{
-              padding: "12px 18px",
-              borderRadius: 12,
-              border: "1px solid white",
-              color: "white",
-              textDecoration: "none",
-            }}
-          >
-            Registracija
-          </Link>
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 6 }}>
+          <Link to="/shop" style={btnPrimary}>Idi u Shop</Link>
+          <Link to="/register" style={btnSecondary}>Registracija</Link>
+          <Link to="/login" style={btnSecondary}>Prijava</Link>
         </div>
       </section>
 
-      {/* FEATURES */}
-      <section style={{ display: "grid", gap: 16 }}>
-        <h2>Funkcionalnosti</h2>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: 16,
-          }}
-        >
-          {[
-            {
-              title: "Autentikacija",
-              text: "Registracija i prijava korisnika s ulogama admin i kupac.",
-            },
-            {
-              title: "CRUD proizvoda",
-              text: "Admin može dodavati, uređivati i brisati proizvode.",
-            },
-            {
-              title: "Narudžbe",
-              text: "Kupci mogu kreirati narudžbe, admin upravlja statusima.",
-            },
-          ].map((item) => (
-            <div
-              key={item.title}
-              style={{
-                padding: 20,
-                borderRadius: 16,
-                border: "1px solid rgba(0,0,0,0.1)",
-              }}
-            >
-              <h3>{item.title}</h3>
-              <p style={{ opacity: 0.8 }}>{item.text}</p>
-            </div>
-          ))}
+      <section
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+          gap: 14,
+        }}
+      >
+        <div className="card">
+          <strong>✅ Responzivan dizajn</strong>
+          <p className="muted">
+            Navigacija i sadržaj se prilagođavaju mobilnim uređajima i desktopu.
+          </p>
+        </div>
+
+        <div className="card">
+          <strong>✅ Dinamični sadržaj</strong>
+          <p className="muted">
+            Proizvodi, košarica i narudžbe učitavaju se i mijenjaju bez reload-a (fetch + JSON).
+          </p>
+        </div>
+
+        <div className="card">
+          <strong>✅ Admin uloga</strong>
+          <p className="muted">
+            Admin upravlja proizvodima i narudžbama (statusi) te ima evidenciju akcija (logs).
+          </p>
         </div>
       </section>
     </div>
   );
 }
+
+const btnPrimary = {
+  display: "inline-block",
+  padding: "10px 14px",
+  borderRadius: 12,
+  textDecoration: "none",
+  border: "1px solid rgba(0,0,0,0.2)",
+  background: "#111",
+  color: "white",
+};
+
+const btnSecondary = {
+  display: "inline-block",
+  padding: "10px 14px",
+  borderRadius: 12,
+  textDecoration: "none",
+  border: "1px solid rgba(0,0,0,0.2)",
+  background: "white",
+  color: "#111",
+};
