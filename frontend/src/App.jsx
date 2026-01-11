@@ -11,6 +11,9 @@ import ProtectedRoute from "./auth/ProtectedRoute.jsx";
 import Cart from "./pages/Cart.jsx";
 import Checkout from "./pages/Checkout.jsx";
 import OrderSuccess from "./pages/OrderSuccess.jsx";
+import AdminOrders from "./pages/AdminOrders.jsx";
+import AdminLogs from "./pages/AdminLogs.jsx";
+
 
 
 export default function App() {
@@ -48,6 +51,24 @@ export default function App() {
         />
 
         <Route path="/order-success/:id" element={<OrderSuccess />} />
+
+        <Route
+          path="/admin/orders"
+          element={
+            <ProtectedRoute role="admin">
+              <AdminOrders />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/logs"
+          element={
+            <ProtectedRoute role="admin">
+              <AdminLogs />
+            </ProtectedRoute>
+          }
+        />
+
 
 
         <Route path="*" element={<Navigate to="/" replace />} />

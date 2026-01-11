@@ -63,6 +63,9 @@ export default function Navbar() {
           <NavLink to="/cart" style={linkStyle}>
             Cart {totalItems > 0 ? `(${totalItems})` : ""}
           </NavLink>
+          <NavLink to="/admin/orders" style={linkStyle}>Orders</NavLink>
+          <NavLink to="/admin/logs" style={linkStyle}>Logs</NavLink>
+
 
 
           {user?.role === "admin" && (
@@ -130,6 +133,9 @@ export default function Navbar() {
             <NavLink to="/cart" style={linkStyle} onClick={closeMenu}>
               Cart {totalItems > 0 ? `(${totalItems})` : ""}
             </NavLink>
+            <NavLink to="/admin/orders" style={linkStyle}>Orders</NavLink>
+            <NavLink to="/admin/logs" style={linkStyle}>Logs</NavLink>
+
 
 
             {user?.role === "admin" && (

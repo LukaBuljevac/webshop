@@ -128,9 +128,12 @@ router.post("/", authRequired, async (req, res) => {
     for (const item of normalized) {
       const p = byId.get(item.product_id);
 
+      const unitPrice = p.price_cents;          // cijena po komadu iz DB
+      const lineTotal = unitPrice * item.quantity;
+
       await conn.query(
-        "INSERT INTO order_items (order_id, product_id, quantity, price_cents) VALUES (?, ?, ?, ?)",
-        [orderId, p.id, item.quantity, p.price_cents]
+        "INSERT INTO order_items (order_id, product_id, quantity, unit_price_cents, price_cents) VALUES (?, ?, ?, ?, ?)",
+        [orderId, p.id, item.quantity, unitPrice, lineTotal]
       );
 
       await conn.query(
@@ -138,6 +141,7 @@ router.post("/", authRequired, async (req, res) => {
         [item.quantity, p.id]
       );
     }
+
 
     // 7) Log
     await writeLog({
