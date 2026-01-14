@@ -24,35 +24,6 @@ export default function Home() {
           <Link to="/login" style={btnSecondary}>Prijava</Link>
         </div>
       </section>
-
-      <section
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: 14,
-        }}
-      >
-        <div className="card">
-          <strong>✅ Responzivan dizajn</strong>
-          <p className="muted">
-            Navigacija i sadržaj se prilagođavaju mobilnim uređajima i desktopu.
-          </p>
-        </div>
-
-        <div className="card">
-          <strong>✅ Dinamični sadržaj</strong>
-          <p className="muted">
-            Proizvodi, košarica i narudžbe učitavaju se i mijenjaju bez reload-a (fetch + JSON).
-          </p>
-        </div>
-
-        <div className="card">
-          <strong>✅ Admin uloga</strong>
-          <p className="muted">
-            Admin upravlja proizvodima i narudžbama (statusi) te ima evidenciju akcija (logs).
-          </p>
-        </div>
-      </section>
     </div>
   );
 }
