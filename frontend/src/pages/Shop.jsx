@@ -1,5 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { useWishlist } from "../wishlist/WishlistContext.jsx";
+
 
 const API = "http://localhost:4000/api";
 

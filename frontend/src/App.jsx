@@ -13,6 +13,7 @@ import Checkout from "./pages/Checkout.jsx";
 import OrderSuccess from "./pages/OrderSuccess.jsx";
 import AdminOrders from "./pages/AdminOrders.jsx";
 import AdminLogs from "./pages/AdminLogs.jsx";
+import Wishlist from "./pages/Wishlist.jsx";
 
 
 
@@ -28,6 +29,9 @@ export default function App() {
         <Route path="/register" element={<Register />} />
 
         <Route path="/cart" element={<Cart />} />
+
+        <Route path="/wishlist" element={<Wishlist />} />
+
 
 
         <Route
