@@ -5,7 +5,7 @@ import App from "./App.jsx";
 import "./index.css";
 import { AuthProvider } from "./auth/AuthContext.jsx";
 import { CartProvider } from "./cart/CartContext.jsx";
-import { WishlistProvider } from "./wishlist/WishlistContext.jsx";
+//import { WishlistProvider } from "./wishlist/WishlistContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
